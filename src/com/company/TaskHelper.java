@@ -46,17 +46,16 @@ public class TaskHelper
 
                 if (command.equals("PEEK"))
                 {
-                    System.out.println(myQueue.peek());
+                    peek();
                 }
 
                 if (command.equals("REMOVE"))
                 {
-                    System.out.println(myQueue.remove());
-                    System.out.println(myQueue.peek());
+                    removeTask();
                 }
                 if (command.equals("HOWMANY"))
                 {
-                    System.out.println(myQueue.size());
+                    howMany();
                 }
             } catch (Exception e)
             {
@@ -64,26 +63,43 @@ public class TaskHelper
             }
         }
 
-            while (!command.equals("FLEE")) ;
-            {
-                try
-                {
-                    myQueue.clear();
-                    System.out.println("List cleared. Bye!");
-                }catch (Exception e)
-                {
-                    System.out.println("Invalid command");
-                }
-
-            }
-        }
-
-
-
-        private void addTask (String task)
+        while (!command.equals("FLEE"));
         {
-            myQueue.add(task);
+
+            flee();
         }
-
-
     }
+
+    private void addTask(String task)
+    {
+        myQueue.add(task);
+    }
+
+    private void peek()
+    {
+        System.out.println(myQueue.peek());
+    }
+
+    private void removeTask()
+    {
+        System.out.println(myQueue.remove());
+        System.out.println(myQueue.peek());
+    }
+
+    private void howMany()
+    {
+        System.out.println(myQueue.size());
+    }
+
+    private void flee()
+    {
+        try
+        {
+            myQueue.clear();
+            System.out.println("List cleared. Bye!");
+        } catch (Exception e)
+        {
+            System.out.println("Invalid command");
+        }
+    }
+}
