@@ -35,40 +35,55 @@ public class TaskHelper
             commandLine = in.nextLine();
             String[] commands = commandLine.split(" ");
             command = commands[0].toUpperCase();
-
-            if (command.equals("ADD")&& commands.length == 2)
+            try
             {
-                String task = commands[1];
-                addTask(task);
+                if (command.equals("ADD") && commands.length == 2)
+                {
+                    String task = commands[1];
+                    addTask(task);
 
-            }
+                }
 
-            if(command.equals("PEEK"))
-            {
-                System.out.println(myQueue.peek());
-            }
+                if (command.equals("PEEK"))
+                {
+                    System.out.println(myQueue.peek());
+                }
 
-            if (command.equals("REMOVE"))
+                if (command.equals("REMOVE"))
+                {
+                    System.out.println(myQueue.remove());
+                    System.out.println(myQueue.peek());
+                }
+                if (command.equals("HOWMANY"))
+                {
+                    System.out.println(myQueue.size());
+                }
+            } catch (Exception e)
             {
-                System.out.println(myQueue.remove());
-                System.out.println(myQueue.peek());
-            }
-            if (command.equals("HOWMANY"))
-            {
-                System.out.println(myQueue.size());
+                System.out.println("Invalid command");
             }
         }
-        while (!command.equals("FLEE"));
+
+            while (!command.equals("FLEE")) ;
+            {
+                try
+                {
+                    myQueue.clear();
+                    System.out.println("List cleared. Bye!");
+                }catch (Exception e)
+                {
+                    System.out.println("Invalid command");
+                }
+
+            }
+        }
+
+
+
+        private void addTask (String task)
         {
-            myQueue.clear();
-            System.out.println("List cleared. Bye!");
+            myQueue.add(task);
         }
+
+
     }
-
-    private void addTask(String task)
-    {
-        myQueue.add(task);
-    }
-
-
-}
