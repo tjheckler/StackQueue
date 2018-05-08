@@ -40,40 +40,60 @@ public class EmergencyTracker
                 if (command.equals("ADD") && commands.length == 2)
                 {
                     String emergency = commands[1];
-                    addTask(emergency);
+                    addEmergency(emergency);
 
                 }
 
                 if (command.equals("PEEK"))
                 {
-                    System.out.println(myStack.peek());
+
+                    peekEmergency();
                 }
 
                 if (command.equals("REMOVE"))
                 {
-                    System.out.println(myStack.pop());
-                    System.out.println(myStack.peek());
+
+                    removeEmergency();
+
                 }
                 if (command.equals("HOWMANY"))
                 {
-                    System.out.println(myStack.size());
+
+                    showHowMany();
+
                 }
             } catch (Exception e)
             {
                 System.out.println("Invalid command");
             }
         }
-        while (command.equals("PANIC"));
+        while (!command.equals("PANIC"));
         {
             myStack.clear();
         }
 
     }
 
-    private void addTask(String emergency)
+    private void addEmergency(String emergency)
     {
+
         myStack.add(emergency);
     }
 
+    private void peekEmergency()
+    {
+        System.out.println(myStack.peek());
+    }
+
+    private void removeEmergency()
+    {
+        System.out.println(myStack.pop());
+        System.out.println(myStack.peek());
+    }
+
+    public void showHowMany()
+    {
+        System.out.println(myStack.size());
+    }
 }
 
