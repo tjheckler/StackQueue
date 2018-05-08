@@ -37,10 +37,12 @@ public class EmergencyTracker
 
             try
             {
-                if (command.equals("ADD") && commands.length == 2)
+                if (command.equals("ADD") && commands.length == 4)
                 {
                     String emergency = commands[1];
-                    addEmergency(emergency);
+                    String emergency2 = commands[2];
+                    String emergency3 = commands[3];
+                    addEmergency(emergency,emergency2,emergency3);
 
                 }
 
@@ -74,10 +76,13 @@ public class EmergencyTracker
 
     }
 
-    private void addEmergency(String emergency)
+    private void addEmergency(String emergency, String emergency1, String emergency2)
     {
 
         myStack.add(emergency);
+        myStack.add(emergency1);
+        myStack.add(emergency2);
+
     }
 
     private void peekEmergency()
