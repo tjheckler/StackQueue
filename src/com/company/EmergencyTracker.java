@@ -69,7 +69,7 @@ public class EmergencyTracker
         }
         while (!command.equals("PANIC"));
         {
-            myStack.clear();
+            flee();
         }
 
     }
@@ -94,6 +94,11 @@ public class EmergencyTracker
     public void showHowMany()
     {
         System.out.println(myStack.size());
+    }
+    private void flee()
+    {
+        myStack.clear();
+        System.out.println("Time to skip town");
     }
 }
 
